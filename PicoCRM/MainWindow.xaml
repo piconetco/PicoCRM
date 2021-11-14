@@ -1,0 +1,109 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PicoCRM"
+    
+   
+       
+        xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+
+   
+    
+   
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDark}"
+         
+        xmlns:Primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon" xmlns:navigationdrawer="clr-namespace:Syncfusion.UI.Xaml.NavigationDrawer;assembly=Syncfusion.SfNavigationDrawer.WPF" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Name="FrmMain" x:Class="PicoCRM.MainWindow"
+        mc:Ignorable="d"
+    
+  
+        ResizeMode="CanMinimize"
+       
+   
+    
+        
+        Title="MainWindow" Height="500" Width="800" Background="#FF2D2D2D" Activated="FrmMain_Activated">
+
+    <Window.Resources >
+        <ResourceDictionary Source="/Core/Views/Styles/Style.Main.xaml"/>
+    </Window.Resources>
+
+
+
+    <navigationdrawer:SfNavigationDrawer
+       
+            x:Name="navigationDrawer"
+      
+        
+          
+            DisplayMode="Compact"  FlowDirection="RightToLeft" ItemClicked="navigationDrawer_ItemClicked">
+
+
+        <navigationdrawer:NavigationItem x:Name="TabDashboard" FontFamily="B Karim" FlowDirection="RightToLeft" fa:Awesome.Content="AddressBook">
+
+
+            <navigationdrawer:NavigationItem.Icon>
+
+                <fa:FontAwesome Icon="Home"/>
+            </navigationdrawer:NavigationItem.Icon>
+
+
+
+
+        </navigationdrawer:NavigationItem>
+
+
+        <navigationdrawer:NavigationItem x:Name="TabContacts" Header="مخاطبین" >
+
+            <navigationdrawer:NavigationItem.Icon  >
+
+                <fa:FontAwesome Icon="User"  />
+
+            </navigationdrawer:NavigationItem.Icon>
+
+
+
+
+        </navigationdrawer:NavigationItem>
+
+
+        <navigationdrawer:NavigationItem x:Name="TabDeals" Header="معاملات" >
+
+            <navigationdrawer:NavigationItem.Icon  >
+                <fa:FontAwesome Icon="Money"  />
+
+            </navigationdrawer:NavigationItem.Icon>
+
+
+
+
+        </navigationdrawer:NavigationItem>
+
+        <navigationdrawer:NavigationItem x:Name="TabMarketing" Header="بازاریابی" >
+
+
+            <navigationdrawer:NavigationItem.Icon  >
+
+                <fa:FontAwesome Icon="Trophy"  />
+
+
+            </navigationdrawer:NavigationItem.Icon>
+
+
+
+
+        </navigationdrawer:NavigationItem>
+
+
+        
+
+
+
+       
+    </navigationdrawer:SfNavigationDrawer>
+
+
+
+</Window>
