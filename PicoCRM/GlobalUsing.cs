@@ -32,5 +32,5 @@ global using System.Windows.Shapes;
 global using PicoCRM.ActionCenter;
 
 global using PicoCRM.Core.view;
-global using PicoCRM.Core.Actions.Contact;
+global using PicoCRM.Core.Modules;
 global using Syncfusion.SfSkinManager;
