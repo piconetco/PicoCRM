@@ -14,6 +14,7 @@ namespace PicoCRM
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUzMkAzMTM5MmUzMzJlMzBGM3NvdU9HbWduN2c2S3NDSmlaTU9kQ0E5R1BlejhLUG1PQkd4TnE1cm5rPQ==");
 
             SfSkinManager.SetTheme(this, new Theme("MaterialDark"));
+           
 
         }
 
@@ -41,7 +42,7 @@ namespace PicoCRM
             }
             if (e.Item == TabContacts )
             {
-                navigationDrawer.ContentView = contactlist.ViewContactList;
+               
             }
            
         }

@@ -1,5 +1,7 @@
 ﻿
 
+using PicoCRM.Modules.Dto.Request.Assoc;
+
 namespace PicoCRM.Modules.Assoc
 {
 

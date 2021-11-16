@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PicoCRM.Modules.Contact;
+
 namespace PicoCRM.Core.view
 {
     /// <summary>
@@ -32,11 +32,7 @@ namespace PicoCRM.Core.view
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            Contact contact = new Contact();
-            long contactid = contact.GetContactID("1400817");
-            var contactde = contact.GetCustomerDetails(contactid);
-
-            lblTotal.Content = contactde.properties.total_revenue.value.ToString();
+           
         }
     }
 }

@@ -20,6 +20,7 @@ namespace PicoCRM.Core.Modules.Contact
             public static string? ProccessOutput { get; set; }
 
             public static string? ContactId { get; set; }
+            public static string? ContactTotalRevenue { get; set; }
 
             public ActionCreateContact(string firstname, string lastname, string phone)
             {
@@ -57,7 +58,8 @@ namespace PicoCRM.Core.Modules.Contact
 
                     var resultOk = JsonConvert.DeserializeObject<ActionCreate.Response>(response.Content);
                     ContactId = resultOk.id.ToString();
-                    return ContactId ;
+                   
+                    return  ContactId;
                 }
 
                 else
@@ -81,8 +83,9 @@ namespace PicoCRM.Core.Modules.Contact
             }
             public string GetContactInfo()
             {
-                return ProccessOutput;
+                return ContactId;
             }
+           
 
 
         }
@@ -131,10 +134,12 @@ namespace PicoCRM.Core.Modules.Contact
         {
             public ActionAssociateContactToDeal(string contactid , string dealid)
             {
-                var client = new RestClient("https://api.hubapi.com/crm/v3/objects/contacts/42001/associations/deals/6928748326/contact_to_deal?hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
+                var client = new RestClient($"https://api.hubapi.com/crm/v3/objects/contacts/{contactid}/associations/deals/{dealid}/contact_to_deal?hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
                 var request = new RestRequest(Method.PUT);
                 request.AddHeader("accept", "application/json");
                 IRestResponse response = client.Execute(request);
+
+             
             }
 
         }

@@ -26,9 +26,7 @@
         
         Title="MainWindow" Height="500" Width="800" Background="#FF2D2D2D" Activated="FrmMain_Activated">
 
-    <Window.Resources >
-        <ResourceDictionary Source="/Core/Views/Styles/Style.Main.xaml"/>
-    </Window.Resources>
+
 
 
 

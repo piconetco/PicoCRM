@@ -15,7 +15,7 @@ namespace PicoCRM.Core.Modules.Deal
         public class ActionCreateDeal
         {
             public static string? BuildData { get; set; }
-            public static string? result1 { get; set; }
+            public static Fields.ActionCreateDeal? result1 { get; set; }
             public ActionCreateDeal(string DealTitle , string DealAmount)
             {
                 var client = new RestClient("https://api.hubapi.com/crm/v3/objects/deals");
@@ -24,7 +24,7 @@ namespace PicoCRM.Core.Modules.Deal
                 request.AddHeader("content-type", "application/json");
                 request.AddQueryParameter("hapikey", "e3484c9e-83da-486a-98fc-f1df51436abe");
 
-                var FieldData = new Fields.ActionCreateDeal
+                var FieldData = new Fields.ActionCreateDeal.Properties
                 {
                     amount= DealAmount,
                     dealname= DealTitle,
@@ -38,14 +38,16 @@ namespace PicoCRM.Core.Modules.Deal
                 BuildData = "{\"properties\":" + json + "}";
                 request.AddParameter("application/json", BuildData, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
-                result1= response.Content;
-                MessageBox.Show(BuildData);
+               
+                var result = JsonConvert.DeserializeObject<Fields.ActionCreateDeal>(response.Content);
+                result1= result;
+               
 
             }
 
             public string GetResult()
             {
-                return result1;
+                return result1.id.ToString();
             }
         }
     

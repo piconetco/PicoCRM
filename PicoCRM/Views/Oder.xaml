@@ -33,6 +33,7 @@
                         </FlowDocument>
                     </RichTextBox>
                     <syncfusion:ButtonAdv x:Name="btnsubmit"  Content="Submit" Label="ثبت اطلاعات" Width="300" Click="btnsubmit_Click"/>
+                    <Label Margin="20,20,20,20" Name="lblStatus" />
                 </StackPanel>
 
             </syncfusion:CardViewItem>

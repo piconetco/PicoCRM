@@ -4,16 +4,9 @@ global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
 global using PicoCRM.Core.Views;
-global using PicoCRM.Modules.Assoc;
-global using PicoCRM.Modules.Contact;
-global using PicoCRM.Modules.Deal;
-global using PicoCRM.Modules.SMS;
-global using PicoCRM.Modules.Dto.Contact;
+
 global using System.Globalization;
-global using PicoCRM.Modules.Dto.Request.Contact;
-global using PicoCRM.Modules.Dto.Respomce.Contact;
-global using PicoCRM.Modules.Dto.Deal;
-global using PicoCRM.Modules.Dto.Request.Assoc;
+
 global using Newtonsoft.Json;
 global using RestSharp;
 global using System.Windows;
@@ -35,3 +28,4 @@ global using PicoCRM.Core.view;
 global using PicoCRM.Core.Modules.Contact;
 global using PicoCRM.Core.Modules.Deal;
 global using Syncfusion.SfSkinManager;
+using PicoCRM.Core.Modules.SMSProvider;

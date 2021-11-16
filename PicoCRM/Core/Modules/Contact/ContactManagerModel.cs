@@ -49,6 +49,7 @@ namespace PicoCRM.Core.Modules.Contact
                     public string? website { get; set; }
                     public string? hs_all_contact_vids { get; set; }
                     public string? hs_is_contact { get; set; }
+                    public string? total_revenue { get; set; }
                 }
 
                 public class Error
