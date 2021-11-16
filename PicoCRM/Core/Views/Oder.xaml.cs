@@ -20,9 +20,9 @@ namespace PicoCRM.Core.Views
         private void btnsubmit_Click(object sender, RoutedEventArgs e)
         {
 
-          Modules.Contact.ContactManager.ActionCreateContact contactManager = new Modules.Contact.ContactManager.ActionCreateContact("1");
+            Modules.Contact.ContactManager.ActionGetContact contactManager = new Modules.Contact.ContactManager.ActionGetContact(42002);
 
-          cAbout.Text =   contactManager.GetContactInfo();
+           
          
         }
 

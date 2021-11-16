@@ -32,16 +32,16 @@ namespace PicoCRM.Core.Modules.Contact
                 }
             }
 
-            public class Responce
+            public class Response
             {
-                public int? id { get; set; }
+                public int id { get; set; }
 
                 public Properties? properties { get; set; }
 
                 public class Properties
                 {
                     public string? company { get; set; }
-                    public DateTime? createdate { get; set; }
+                    public DateTime createdate { get; set; }
                     public string? email { get; set; }
                     public string? firstname { get; set; }
                     public string? lastname { get; set; }
@@ -50,10 +50,41 @@ namespace PicoCRM.Core.Modules.Contact
                     public string? hs_all_contact_vids { get; set; }
                     public string? hs_is_contact { get; set; }
                 }
+
+                public class Error
+                {
+                    public string? status { get; set; }
+                    public string? message { get; set; }
+
+                    public string? correlationId { get; set; }
+                    public string? category { get; set; }
+                }
             }
 
         }
 
+        public class ActionGet
+        {
+            public class Response
+            {
+                public int id { get; set; }
+                public Properties properties { get; set; }
+
+                public class Properties
+                {
+                    public DateTime createdate { get; set; }
+                    public string? emmail { get; set; }
+                    public string firstname { get; set; }
+
+                    public string lastname { get; set; }
+
+                }
+                public DateTime createdAt { get; set; }
+                public DateTime updatedAt { get; set; }
+                public bool archived { get; set; }
+                public  string archivedAt { get; set; }
+            }
+        }
     }
 
 }
