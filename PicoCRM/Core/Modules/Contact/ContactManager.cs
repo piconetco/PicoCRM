@@ -86,6 +86,7 @@ namespace PicoCRM.Core.Modules.Contact
 
 
         }
+       
         public class ActionDeleteContact
         {
 
@@ -105,18 +106,37 @@ namespace PicoCRM.Core.Modules.Contact
             public static ActionGet.Response? ContactData { get; set; }
             public ActionGetContact(int contactId)
             {
-                var client = new RestClient($"https://api.hubapi.com/crm/v3/objects/contacts/{contactId}?archived=false&hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
+                
+                var client = new RestClient($"https://api.hubapi.com/crm/v3/objects/contacts/{contactId}?");
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("accept", "application/json");
+                request.AddQueryParameter("properties", "phone");
+                request.AddQueryParameter("properties", "total_revenue");
+                request.AddQueryParameter("properties", "firstname");
+                request.AddQueryParameter("properties", "lastname");
+                request.AddQueryParameter("archived","false");
+                request.AddQueryParameter("hapikey", "e3484c9e-83da-486a-98fc-f1df51436abe");
                 IRestResponse response = client.Execute(request);
                 var result =  JsonConvert.DeserializeObject<ActionGet.Response>(response.Content);
-
+           
                 ContactData = result;
             }
             public ActionGet.Response GetData()
             {
                 return ContactData;
             }
+        }
+
+        public class ActionAssociateContactToDeal
+        {
+            public ActionAssociateContactToDeal(string contactid , string dealid)
+            {
+                var client = new RestClient("https://api.hubapi.com/crm/v3/objects/contacts/42001/associations/deals/6928748326/contact_to_deal?hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("accept", "application/json");
+                IRestResponse response = client.Execute(request);
+            }
+
         }
     }
     

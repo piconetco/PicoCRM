@@ -20,10 +20,14 @@ namespace PicoCRM.Core.Views
         private void btnsubmit_Click(object sender, RoutedEventArgs e)
         {
 
-            Modules.Contact.ContactManager.ActionGetContact contactManager = new Modules.Contact.ContactManager.ActionGetContact(42002);
-
+            ContactManager.ActionCreateContact contactManager = new ContactManager.ActionCreateContact(cFName.Text,cLName.Text,cPhone.Text);
            
-         
+            MessageBox.Show(contactManager.GetContactInfo());
+
+            DealManager.ActionCreateDeal DealManager = new DealManager.ActionCreateDeal(cTitle.Text, cPrice.Text);
+
+            MessageBox.Show( DealManager.GetResult());
+            
         }
 
 

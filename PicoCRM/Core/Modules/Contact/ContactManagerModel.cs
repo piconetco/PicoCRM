@@ -67,23 +67,29 @@ namespace PicoCRM.Core.Modules.Contact
         {
             public class Response
             {
-                public int id { get; set; }
-                public Properties properties { get; set; }
+                public int? id { get; set; }
+                public Properties? properties { get; set; }
 
                 public class Properties
                 {
                     public DateTime createdate { get; set; }
-                    public string? emmail { get; set; }
-                    public string firstname { get; set; }
-
-                    public string lastname { get; set; }
+                    public string? email { get; set; }
+                    public string? firstname { get; set; }
+                    public string? phone { get; set; }
+                    public string? lastname { get; set; }
+                    public string? total_revenue { get; set; }
 
                 }
                 public DateTime createdAt { get; set; }
                 public DateTime updatedAt { get; set; }
                 public bool archived { get; set; }
-                public  string archivedAt { get; set; }
+                public  string? archivedAt { get; set; }
             }
+        }
+
+        public class ActionAssocContact
+        {
+
         }
     }
 
