@@ -11,10 +11,9 @@ global using Newtonsoft.Json;
 global using RestSharp;
 global using System.Windows;
 global using System.Windows.Controls;
-global using HubSpot.NET.Api.Contact.Dto;
-global using  HubSpot.NET.Core;
-global using Windows.UI.Notifications;
 
+global using Windows.UI.Notifications;
+global using PicoCRM.Core.Views.Pages;
 global using System.Windows.Data;
 global using System.Windows.Documents;
 global using System.Windows.Input;
@@ -22,9 +21,9 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
 global using System.Windows.Shapes;
-global using PicoCRM.ActionCenter;
 
-global using PicoCRM.Core.view;
+
+
 global using PicoCRM.Core.Modules.Contact;
 global using PicoCRM.Core.Modules.Deal;
 global using Syncfusion.SfSkinManager;

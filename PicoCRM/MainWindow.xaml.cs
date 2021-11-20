@@ -12,7 +12,8 @@ namespace PicoCRM
         {
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUzMkAzMTM5MmUzMzJlMzBGM3NvdU9HbWduN2c2S3NDSmlaTU9kQ0E5R1BlejhLUG1PQkd4TnE1cm5rPQ==");
-
+            Core.Views.Pages.Deal.QuickCreateDeal quickCreateDeal = new Core.Views.Pages.Deal.QuickCreateDeal();
+            navigationDrawer.ContentView = quickCreateDeal.Su;
             SfSkinManager.SetTheme(this, new Theme("MaterialDark"));
            
 
@@ -32,13 +33,13 @@ namespace PicoCRM
         private void navigationDrawer_ItemClicked(object sender, Syncfusion.UI.Xaml.NavigationDrawer.NavigationItemClickedEventArgs e)
         {
 
-            Page1 page = new Page1();
 
-            Oder Order = new Oder();
-            ContactList contactlist = new ContactList();
+
+
+            Core.Views.Pages.Deal.QuickCreateDeal quickCreateDeal = new Core.Views.Pages.Deal.QuickCreateDeal();
             if (e.Item == TabDashboard)
             {
-                navigationDrawer.ContentView = Order.Su;
+                navigationDrawer.ContentView = quickCreateDeal.Su;
             }
             if (e.Item == TabContacts )
             {

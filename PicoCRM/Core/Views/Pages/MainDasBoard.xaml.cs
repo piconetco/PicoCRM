@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PicoCRM.Core.view
+namespace PicoCRM.Core.Views.Pages
 {
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class MainDashBoard : Page
     {
-        public Page1()
+        public MainDashBoard()
         {
             InitializeComponent();
         }

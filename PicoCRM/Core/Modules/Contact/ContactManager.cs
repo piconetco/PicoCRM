@@ -46,11 +46,13 @@ namespace PicoCRM.Core.Modules.Contact
             private string DoCreate()
             {
 
-                var client = new RestClient("https://api.hubapi.com/crm/v3/objects/contacts?hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
+                var client = new RestClient("https://api.hubapi.com/crm/v3/objects/contacts");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("accept", "application/json");
                 request.AddHeader("content-type", "application/json");
                 request.AddParameter("application/json", BuildData, ParameterType.RequestBody);
+
+                request.AddQueryParameter("hapikey", "3ad5de2d-b2b7-450f-9396-8039cf878077");
                 IRestResponse response = client.Execute(request);
 
                 if (response.IsSuccessful)
@@ -118,7 +120,7 @@ namespace PicoCRM.Core.Modules.Contact
                 request.AddQueryParameter("properties", "firstname");
                 request.AddQueryParameter("properties", "lastname");
                 request.AddQueryParameter("archived","false");
-                request.AddQueryParameter("hapikey", "e3484c9e-83da-486a-98fc-f1df51436abe");
+                request.AddQueryParameter("hapikey", "3ad5de2d-b2b7-450f-9396-8039cf878077");
                 IRestResponse response = client.Execute(request);
                 var result =  JsonConvert.DeserializeObject<ActionGet.Response>(response.Content);
            
@@ -132,14 +134,25 @@ namespace PicoCRM.Core.Modules.Contact
 
         public class ActionAssociateContactToDeal
         {
+          public static string Result { get; set; }
+            
             public ActionAssociateContactToDeal(string contactid , string dealid)
             {
-                var client = new RestClient($"https://api.hubapi.com/crm/v3/objects/contacts/{contactid}/associations/deals/{dealid}/contact_to_deal?hapikey=e3484c9e-83da-486a-98fc-f1df51436abe");
+                var client = new RestClient($"https://api.hubapi.com/crm/v3/objects/contacts/{contactid}/associations/deals/{dealid}/contact_to_deal");
                 var request = new RestRequest(Method.PUT);
                 request.AddHeader("accept", "application/json");
+                request.AddQueryParameter("hapikey", "3ad5de2d-b2b7-450f-9396-8039cf878077");
+
                 IRestResponse response = client.Execute(request);
 
+                Result = response.Content;
+
              
+            }
+
+            public string GetResult ()
+            {
+                return Result;
             }
 
         }

@@ -1,14 +1,14 @@
-﻿<Page xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Name="MainDashboard1"  x:Class="PicoCRM.Core.view.Page1"
+﻿<Page xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Name="MainDashboard"  x:Class="PicoCRM.Core.Views.Pages.MainDashBoard"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PicoCRM.Core.view"
+
       xmlns:syncf="clr-namespace:Syncfusion.Themes.MaterialDark.WPF;assembly=Syncfusion.Themes.MaterialDark.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1" Loaded="MainDashboard1_Loaded">
-    <Grid x:Name="MainDashboard" >
+    <Grid x:Name="MainDashboardView" >
         <Canvas HorizontalAlignment="Left" Height="430" Margin="10,0,0,0" VerticalAlignment="Center" Width="702">
             <Grid Height="68" Background="AliceBlue" Canvas.Left="278" Canvas.Top="33" Width="186"/>
             <Grid  Height="66"  Canvas.Left="485" Canvas.Top="34" Width="187" Loaded="Grid_Loaded">

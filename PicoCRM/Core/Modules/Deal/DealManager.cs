@@ -22,7 +22,7 @@ namespace PicoCRM.Core.Modules.Deal
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("accept", "application/json");
                 request.AddHeader("content-type", "application/json");
-                request.AddQueryParameter("hapikey", "e3484c9e-83da-486a-98fc-f1df51436abe");
+                request.AddQueryParameter("hapikey", "3ad5de2d-b2b7-450f-9396-8039cf878077");
 
                 var FieldData = new Fields.ActionCreateDeal.Properties
                 {
@@ -30,7 +30,7 @@ namespace PicoCRM.Core.Modules.Deal
                     dealname= DealTitle,
                     dealstage= "closedwon",
                     closedate=  DateTime.UtcNow,
-                    hubspot_owner_id= "57458593",
+                    hubspot_owner_id= "113813853",
                     pipeline="default"
 
                 };
