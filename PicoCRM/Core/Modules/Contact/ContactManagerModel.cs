@@ -28,7 +28,7 @@ namespace PicoCRM.Core.Modules.Contact
                     public string? lastname { get; set; }
                     public string? phone { get; set; }
                     public string? website { get; set; }
-
+                  
                 }
             }
 
@@ -37,6 +37,11 @@ namespace PicoCRM.Core.Modules.Contact
                 public int id { get; set; }
 
                 public Properties? properties { get; set; }
+                public string? status { get; set; }
+                public string? message { get; set; }
+
+                public string? correlationId { get; set; }
+                public string? category { get; set; }
 
                 public class Properties
                 {
@@ -54,11 +59,7 @@ namespace PicoCRM.Core.Modules.Contact
 
                 public class Error
                 {
-                    public string? status { get; set; }
-                    public string? message { get; set; }
-
-                    public string? correlationId { get; set; }
-                    public string? category { get; set; }
+                    
                 }
             }
 

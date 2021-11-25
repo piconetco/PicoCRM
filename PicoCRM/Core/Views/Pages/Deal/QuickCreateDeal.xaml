@@ -13,12 +13,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FastCreate Deal" >
-   
+
     <Grid x:Name="Su"  >
 
         <syncfusion:CardView x:Name="CardView" FontFamily="2  Yekan" HorizontalAlignment="Center" VerticalAlignment="Center" ShowHeader="False" Orientation="Vertical" Opacity="0.59">
-            <syncfusion:CardViewItem Header="ثبت تراکنش جدید" Height="440" Width="350" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel >
+            <syncfusion:CardViewItem Header="ثبت تراکنش جدید" Height="440" Width="603" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <StackPanel Margin="0,0,-57,0" >
                     <TextBox x:Name="cTitle" Text="عنوان" Height="50" Width="300"  />
                     <TextBox x:Name="cPrice" Text="مبلغ" Height="50" Width="300"  />
 

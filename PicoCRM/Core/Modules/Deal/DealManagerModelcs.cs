@@ -20,6 +20,7 @@ namespace PicoCRM.Core.Modules.Deal
                 public string? dealname { get; set; }
                 public string? dealstage { get; set; }
                 public string hubspot_owner_id { get; set; }
+                public string deal_desc { get; set; }
                 public string pipeline { get; set; }
             }
            

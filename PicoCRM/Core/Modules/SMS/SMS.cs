@@ -81,7 +81,7 @@ namespace PicoCRM.Core.Modules.SMSProvider
 
             }
 
-            public string SendReportToAdmin(string AdminPhone, string DealAmount, string DealTitle, string TotalRevenue, string trackingcode)
+            public string SendReportToAdmin(string AdminPhone, string DealAmount, string DealTitle, string TotalRevenue,string about, string trackingcode)
             {
                 DateTime thisDate = DateTime.Now;
                 PersianCalendar pc = new PersianCalendar();
@@ -106,12 +106,14 @@ namespace PicoCRM.Core.Modules.SMSProvider
                 request.AddQueryParameter("p2", "time");
                 request.AddQueryParameter("p3", "amount");
                 request.AddQueryParameter("p4", "totals");
-                request.AddQueryParameter("p5", "trackingcode");
+                request.AddQueryParameter("p5", "about");
+                request.AddQueryParameter("p6", "trackingcode");
                 request.AddQueryParameter("v1", DealTitle);
                 request.AddQueryParameter("v2", PersianDateConverter + " "+ DateTime.Now.Hour+":"+ DateTime.Now.Minute+":"+ DateTime.Now.Second);
                 request.AddQueryParameter("v3", DealAmount);
                 request.AddQueryParameter("v4", TotalRevenue);
-                request.AddQueryParameter("v5", trackingcode);
+                request.AddQueryParameter("v5", about);
+                request.AddQueryParameter("v6", trackingcode);
 
                 request.AddHeader("content-type", "application/x-www-form-urlencoded");
                 var response = client.Execute(request);

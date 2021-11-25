@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static PicoCRM.Core.Modules.Contact.Fields;
 
@@ -45,6 +46,8 @@ namespace PicoCRM.Core.Modules.Contact
 
             private string DoCreate()
             {
+                ActionCreate.Response.Error ErrorData = new ActionCreate.Response.Error();
+                ActionCreate.Response.Properties ContactProp = new ActionCreate.Response.Properties();
 
                 var client = new RestClient("https://api.hubapi.com/crm/v3/objects/contacts");
                 var request = new RestRequest(Method.POST);
@@ -54,36 +57,27 @@ namespace PicoCRM.Core.Modules.Contact
 
                 request.AddQueryParameter("hapikey", "3ad5de2d-b2b7-450f-9396-8039cf878077");
                 IRestResponse response = client.Execute(request);
+                ContactId = response.Content;
+               
 
-                if (response.IsSuccessful)
-                {
-
-                    var resultOk = JsonConvert.DeserializeObject<ActionCreate.Response>(response.Content);
-                    ContactId = resultOk.id.ToString();
-                   
-                    return  ContactId;
-                }
-
-                else
-                {
-                    var resultError = JsonConvert.DeserializeObject<ActionCreate.Response.Error>(response.Content);
-
-                    if (resultError.category == "CONFLICT")
-                    {
-                        string ContactId = new String(resultError.message.Where(Char.IsDigit).ToArray());
-                        return ContactId;
-                    }
-                    else
-                    {
-                        return "UNKNOWN_ERROR";
-                    }
-
-                }
+                var resp = JsonConvert.DeserializeObject<ActionCreate.Response>(response.Content);
 
 
+                 if (resp.category == "CONFLICT")
+                  { 
+                    string ExtractedContactID =Regex.Match(resp.message, @"\d+").Value;
+                    
+                    ContactId = ExtractedContactID;
+                  }
+                  else
+                  {
+                      ContactId = resp.id.ToString();
+                  }
+
+                return "";
 
             }
-            public string GetContactInfo()
+            public string GetContactID()
             {
                 return ContactId;
             }

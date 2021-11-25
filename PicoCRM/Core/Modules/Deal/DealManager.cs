@@ -16,7 +16,7 @@ namespace PicoCRM.Core.Modules.Deal
         {
             public static string? BuildData { get; set; }
             public static Fields.ActionCreateDeal? result1 { get; set; }
-            public ActionCreateDeal(string DealTitle , string DealAmount)
+            public ActionCreateDeal(string DealTitle , string DealAmount , string Deal_About)
             {
                 var client = new RestClient("https://api.hubapi.com/crm/v3/objects/deals");
                 var request = new RestRequest(Method.POST);
@@ -26,11 +26,12 @@ namespace PicoCRM.Core.Modules.Deal
 
                 var FieldData = new Fields.ActionCreateDeal.Properties
                 {
-                    amount= DealAmount,
-                    dealname= DealTitle,
-                    dealstage= "closedwon",
-                    closedate=  DateTime.UtcNow,
-                    hubspot_owner_id= "113813853",
+                    amount = DealAmount,
+                    dealname = DealTitle,
+                    dealstage = "closedwon",
+                    closedate = DateTime.UtcNow,
+                    hubspot_owner_id = "113813853",
+                    deal_desc = Deal_About,
                     pipeline="default"
 
                 };

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace PicoCRM.Core.Views.Pages.Deal
         public static string?  ContactId { get; set; }
         public static string?  DealId { get; set; }
         public static string? TodayId { get; set; }
-        public static string? TodayDate { get; set; }
+        public static string? TodayDate = DateTime.UtcNow.Date.Year.ToString() + DateTime.UtcNow.Month + DateTime.UtcNow.Day;
         public QuickCreateDeal()
         {
             InitializeComponent();
@@ -35,48 +36,77 @@ namespace PicoCRM.Core.Views.Pages.Deal
             
             try
             {
+                ContactManager.ActionCreateContact DayManager = new ContactManager.ActionCreateContact("Day:", TodayDate, TodayDate);
+                
+                TodayId = DayManager.GetContactID();
 
-                #region
-             
-                TodayDate = (DateTime.Today.Year + DateTime.Today.Month + DateTime.Today.Day).ToString();
-
+                
                 ContactManager.ActionCreateContact contactManager = new ContactManager.ActionCreateContact(cFName.Text, cLName.Text, cPhone.Text);
+                ContactId = contactManager.GetContactID();
 
-                ContactId = contactManager.GetContactInfo();
-
-                lblStatus.Content = $"COntact Created With ID:{ContactId}";
-
-                DealManager.ActionCreateDeal DealManager = new DealManager.ActionCreateDeal(cTitle.Text, cPrice.Text);
-
+                DealManager.ActionCreateDeal DealManager = new DealManager.ActionCreateDeal(cTitle.Text, cPrice.Text ,cAbout.Text);
                 DealId = DealManager.GetResult();
-                lblStatus.Content = $"Deal  Created With ID:{DealId}";
-                ContactManager.ActionAssociateContactToDeal DealerAssign = new ContactManager.ActionAssociateContactToDeal(ContactId, DealId);
+              
+                ContactManager.ActionAssociateContactToDeal DealerAssign = new ContactManager.ActionAssociateContactToDeal(TodayId, DealId);
+
+                ContactManager.ActionAssociateContactToDeal ContactAssign = new ContactManager.ActionAssociateContactToDeal(ContactId, DealId);
 
                 Modules.SMSProvider.Handler.Send handler = new Modules.SMSProvider.Handler.Send();
 
+                ContactManager.ActionGetContact ReportData = new ContactManager.ActionGetContact(int.Parse(TodayId));
                
-                #endregion
-               
+                ContactManager.ActionGetContact ContactData = new ContactManager.ActionGetContact(int.Parse(ContactId));
+              
+                string CustomerRevenue =   ContactData.GetData().properties.total_revenue;
+
+                string? ReportRevenue = ReportData.GetData().properties.total_revenue;
+
+
+
+                handler.SendTranaction(cPhone.Text, cPrice.Text,CustomerRevenue, cFName.Text, cLName.Text, DealManager.GetResult());
+
+
+                /*  handler.SendReportToAdmin("09150089472", cPrice.Text, cTitle.Text, "", DealId);*/
+
+            
+                string result =   handler.SendReportToAdmin("09109740017", cPrice.Text, cTitle.Text,ReportRevenue,cAbout.Text,  DealId);
+                MessageBox.Show(result);
+                /*
+                  #region
+
+
+
                 
-                ContactManager.ActionCreateContact DayManager = new ContactManager.ActionCreateContact(cFName.Text, cLName.Text, cPhone.Text);
-                TodayId = DayManager.GetContactInfo();
-                MessageBox.Show(TodayId);
-                ContactManager.ActionAssociateContactToDeal AssignDayToContact = new ContactManager.ActionAssociateContactToDeal(TodayId, DealId);
-                var result = AssignDayToContact.GetResult();
-           
-                lblStatus.Content = "عملیات با موفقیت انجام شد";
 
-  
-                handler.SendTranaction(cPhone.Text, cPrice.Text, "".ToString(), cFName.Text, cLName.Text, DealManager.GetResult());
+                  lblStatus.Content = $"COntact Created With ID:{ContactId}";
 
-                handler.SendReportToAdmin("09150089472", cPrice.Text, cTitle.Text, "", DealId);
-                handler.SendReportToAdmin("09109740017", cPrice.Text, cTitle.Text, "", DealId);
+
+                  
+                  lblStatus.Content = $"Deal  Created With ID:{DealId}";
+
+                
+
+
+                  #endregion
+
+
+
+                  /*lblStatus.Content = "Balance Increased";
+                  ContactManager.ActionAssociateContactToDeal AssignDayToContact = new ContactManager.ActionAssociateContactToDeal(TodayId, DealId);
+                  lblStatus.Content = AssignDayToContact.GetResult();
+
+
+
+
+
+                 
+                  */
             }
 
 
-         
 
-          
+
+
 
             catch (Exception ex)
             {
@@ -85,6 +115,8 @@ namespace PicoCRM.Core.Views.Pages.Deal
           
         }
 
-       
+        private void CardViewItem_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+        }
     }
 }
